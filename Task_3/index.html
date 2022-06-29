@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Convertor </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="container">
+    <form onsubmit="temperatureconverter(); return false">
+      <h1>Temperature Convertor</h1>
+      <span class="row">
+        <span>
+          <label for="degrees">Degrees</label><br>
+          <input type="number" name="degrees" id="degrees">
+        </span>
+        <span>
+          <label for="type">Type</label><br>
+          <select name="type" id="type">
+            <option value="0">Fahrenheit</option>
+            <option value="1">Celcius</option>
+          </select><br>
+        </span>
+      </span>
+      <span class="convertspan">
+        <button id="convertbtn">Convert</button><br>
+      </span>
+      <span class="resultspan">
+        <button id="result" style="height: 30px; width:170px"></button>
+      </span>
+    </form>
+  </div>
+
+  <script>
+    function temperatureconverter() {
+      var selectElement = document.getElementById("type");
+      var val = selectElement.options[selectElement.selectedIndex].value;
+      var num = document.getElementById("degrees").value;
+      var result;
+      if (val == 0) {
+        result = fTc(num);
+        document.getElementById("result").innerHTML = + result + " C";
+      }
+      else {
+        result = cTf(num);
+        document.getElementById("result").innerHTML = + result + " F" ;
+      
+      }
+    }
+      function cTf(Celcius) {
+        var Fahrenheit = ((Celcius * (9 / 5)) + 32);
+        return Fahrenheit;
+      }
+      function fTc(Fahrenheit) {
+        var Celcius = ((Fahrenheit - 32) * (5 / 9));
+        return Celcius;
+      }
+  </script>
+</body>
+
+</html>
